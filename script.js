@@ -53,9 +53,7 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
+
 // Write a NEW function called playGame(). 
 // Use the previous function inside of this one 
 // to play a five round game that keeps score and 
@@ -63,13 +61,11 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0;
     let computerScore  = 0;
-    playerSelections = ["Rock", "Paper", "Scissors", "Paper", "Rock"];
     for (let i = 0; i < 5; i++) {
-        let playerSelection = playerSelections[i];
+        let playerSelection = prompt("Enter 'Rock', 'Paper', or 'Scissors'.");
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
         if (result.length > 4) {
-            console.log(result[4]);
             if (result[4] === "L") {
                 computerScore++;
             }
@@ -77,10 +73,8 @@ function playGame() {
                 playerScore++;
             }
         }
+        console.log(result);
     }
-
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
 
     if (playerScore > computerScore) {
         console.log("You win!");
@@ -91,7 +85,6 @@ function playGame() {
     else {
         console.log("It's a tie!");
     }
-
 
 }
 playGame();
