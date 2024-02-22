@@ -25,3 +25,40 @@ function getComputerChoice() {
         return "SCISSORS";
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+  // your code here!
+  playerSelection = playerSelection.toUpperCase();
+
+  if (playerSelection == computerSelection) {
+    return "Tie!";
+  }
+  else if (playerSelection == "ROCK") {
+    if (computerSelection == "PAPER") {
+        return "You Lose! Paper beats rock.";
+    }
+    else {
+        return "You Win! Rock beats scissors.";
+    }
+  }
+  else if (playerSelection == "SCISSORS") {
+    if (computerSelection == "PAPER") {
+        return "You Win! Scissors beats paper.";
+    }
+    else {
+        return "You Lose! Rock beats scissors.";
+    }
+  }
+  else {
+    if (computerSelection == "SCISSORS") {
+        return "You Lose! Scissors beats paper.";
+    }
+    else {
+        return "You win! Paper beats rock";
+    }
+  }
+}
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
