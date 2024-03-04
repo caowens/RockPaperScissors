@@ -55,49 +55,47 @@ function playRound(playerSelection) {
   }
 }
 
-// Write a NEW function called playGame(). 
-// Use the previous function inside of this one 
-// to play a five round game that keeps score and 
-// reports a winner or loser at the end.
-function playGame() {
-    let playerScore = 0;
-    let computerScore  = 0;
-    /*
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter 'Rock', 'Paper', or 'Scissors'.");
-        let computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection);
-        if (result.length > 4) {
-            if (result[4] === "L") {
+const btns = document.querySelectorAll('button');
+let playerScore = 0;
+let computerScore = 0;
+btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        if (finalResults.innerText !== '') {
+            finalResults.innerText = '';
+        }
+        let playerChoice = btn.innerText;
+        let results = playRound(playerChoice);
+        let resultsDiv = document.querySelector('#results');
+        resultsDiv.innerText = `Round results: ${results}`;
+
+        if (results.length > 4) {
+            if (results[4] === "L") {
                 computerScore++;
             }
             else {
                 playerScore++;
             }
         }
-        console.log(result);
-    }
-    */
 
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    }
-    else if (computerScore > playerScore) {
-        console.log("You lose!");
-    }
-    else {
-        console.log("It's a tie!");
-    }
+        let playerScoreDiv = document.querySelector('#playerScore');
+        playerScoreDiv.innerText = `Player Score: ${playerScore}`;
 
-}
+        let computerScoreDiv = document.querySelector('#computerScore');
+        computerScoreDiv.innerText = `Computer Score: ${computerScore}`;
 
-const btns = document.querySelectorAll('button');
-
-btns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        let playerChoice = btn.innerText;
-        let results = playRound(playerChoice);
-        let resultsDiv = document.querySelector('#results');
-        resultsDiv.innerText = `Results: ${results}`;
+        if (playerScore === 5 || computerScore == 5) {
+            let finalResults = document.querySelector('#finalResults');
+            if (playerScore > computerScore) {
+                finalResults.innerText = "Congratulations! You win the game!";
+            }
+            else if (computerScore > playerScore) {
+                finalResults.innerText = "Sorry, you've lost the game.";
+            }
+            else {
+                finalResults.innerText = "Looks like you've tied!";
+            }
+            playerScore = 0;
+            computerScore = 0;
+        }
     });
 })
