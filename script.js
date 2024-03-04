@@ -61,6 +61,7 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0;
     let computerScore  = 0;
+    /*
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Enter 'Rock', 'Paper', or 'Scissors'.");
         let computerSelection = getComputerChoice();
@@ -75,6 +76,7 @@ function playGame() {
         }
         console.log(result);
     }
+    */
 
     if (playerScore > computerScore) {
         console.log("You win!");
