@@ -21,9 +21,10 @@ function getComputerChoice() {
 }
 
 // Write a function that plays a single round of Rock Paper Scissors.
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
   // your code here!
   playerSelection = playerSelection.toUpperCase();
+  let computerSelection = getComputerChoice();
 
   if (playerSelection == computerSelection) {
     return "Tie!";
@@ -89,4 +90,12 @@ function playGame() {
     }
 
 }
-playGame();
+
+const btns = document.querySelectorAll('button');
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        let playerChoice = btn.innerText;
+        console.log(playRound(playerChoice));
+    });
+})
